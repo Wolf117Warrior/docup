@@ -1,0 +1,55 @@
+#!/bin/bash
+######## Variable ###########
+CHEMIN=/chemin/de/votre/dossier/docker/apps
+############################
+echo "Liste des containers disponible sur le serveur"
+echo " "
+ls -l $CHEMIN
+sleep 1
+echo " "
+
+#Variable
+#var1=$1
+echo -e "Quel est le conteneur à mettre à jour ? \c "
+read CONTENEUR
+echo " "
+
+# Déplacement dans le répertoire Docker
+cd ${CHEMIN}$CONTENEUR
+echo "Accès au répertoire des applis conteneurisé"
+
+sleep 2
+
+echo " "
+# Placement dans le dossier de l'application
+#cd $var1
+echo "Vous êtes dans le dossier :"
+pwd
+echo " "
+
+sleep 2
+
+echo "Lancement de la mise à jour du conteneur"
+echo " "
+sleep 2
+
+# Récupération de la dernière images
+echo "Mise à jour de l'image docker"
+sudo docker-compose pull
+echo " "
+
+sleep 2
+
+# Mise à jour du container avec la dernière version
+echo "Recréation du conteneur avec le nouvelle image docker"
+sudo docker-compose up -d --remove-orphans
+echo " "
+
+sleep 2
+
+# suppression des images non utilisé
+echo "Suppression des images docker non utilisé"
+sudo docker image prune -f
+echo " "
+
+sleep 2
