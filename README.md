@@ -15,27 +15,15 @@ Vous n'êtes pas obligé de prendre toute la commande, ajustez en fonction de vo
 
 ## Configuration du script
 
-Il faut dans un premier temps renseigner le bon dossier ou se trouve vos applications dockérisé et les fichier docker-compose.yml.
+Il faut dans un premier temps renseigner le bon dossier ou se trouve vos applications dockérisé et les fichiers docker-compose.yml.
 
-Modifiez la ligne correspondant au chemin de votre dossier.
+Modifiez la variable CHEMIN correspondant au chemin de votre dossier.
+ 
+    #!/bin/bash
+    ######## Variable ###########
+    CHEMIN=/stockage/docker_apps/
+    ############################
+  
+Et ajouter également **sudo** au début des commandes si cela est nécessaire avec votre utilisateur courant.
 
-    #Variable
-    var1=$1
-    echo " "
-    #Déplacement dans le répertoire Docker
-    cd **/dossier/de/vos/conteneur/docker/**
-    echo "Accès au répertoire des applis conteneurisé"
-
-Et ajouter également **sudo** si la commande docker-compose avec votre utilisateur courant le nécessite.
-
-Si votre docker est structuré de cette manière
-
-    ~/docker-apps
-    |- App_docker1
-    |- App_docker2
-    |- App_docker3
-Vous n'aurez plus qu'a lancer la commande de cette manière **up_doc <nom_appli>** pour chaque application à mettre à jour.
-
-Exemple :
-
-    up_doc App_docker1
+Vous n'aurez plus qu'a lancer la commande de cette manière **docup**, et suivez les instructions.
